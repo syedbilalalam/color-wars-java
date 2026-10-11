@@ -17,7 +17,7 @@ public final class NativeLibraryLoader {
     public static synchronized Resources load(String libName) {
         final String PLATFORM_NAME = detectPlatformDir();
         final String LIB_FILE_NAME = detectLibFileName(libName);
-        final String RESOURCE_PATH = "/";
+        final String RESOURCE_PATH = "/game";
         Path resourceDir;
         Path libResourceFilePath;
         Path gameResourceDir;
@@ -27,9 +27,9 @@ public final class NativeLibraryLoader {
 
         resourceDir = ResourceLoader.extractResourceFolder(RESOURCE_PATH);
         libResourceFilePath = Path.of(
-                resourceDir.toAbsolutePath().toString(), "game", "bin", PLATFORM_NAME, LIB_FILE_NAME
+                resourceDir.toAbsolutePath().toString(), "bin", PLATFORM_NAME, LIB_FILE_NAME
         );
-        gameResourceDir = Path.of(resourceDir.toAbsolutePath().toString(), "game");
+        gameResourceDir = Path.of(resourceDir.toAbsolutePath().toString());
 
         resources = new Resources(gameResourceDir, libResourceFilePath);
 

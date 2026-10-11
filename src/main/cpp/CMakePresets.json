@@ -1,0 +1,51 @@
+﻿{
+    "version": 6,
+
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_SHARED_LIBS": "OFF"
+            }
+        },
+        {
+            "name": "windows-x64",
+            "displayName": "Windows x64",
+            "inherits": "base",
+            "binaryDir": "${sourceDir}/build/windows-x64",
+            "toolchainFile": "${sourceDir}/toolchain/toolchain-win-x64.cmake"
+        },
+        {
+            "name": "windows-x86",
+            "displayName": "Windows x86",
+            "inherits": "base",
+            "binaryDir": "${sourceDir}/build/windows-x86",
+            "toolchainFile": "${sourceDir}/toolchain/toolchain-win-x86.cmake"
+
+        },
+        {
+            "name": "windows-arm64",
+            "displayName": "Windows ARM64",
+            "inherits": "base",
+            "binaryDir": "${sourceDir}/build/windows-arm64",
+            "toolchainFile": "${sourceDir}/toolchain/toolchain-win-arm64.cmake"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-x64",
+            "configurePreset": "windows-x64"
+        },
+        {
+            "name": "windows-x86",
+            "configurePreset": "windows-x86"
+        },
+        {
+            "name": "windows-arm64",
+            "configurePreset": "windows-arm64"
+        }
+    ]
+}
